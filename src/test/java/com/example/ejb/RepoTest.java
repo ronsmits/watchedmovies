@@ -21,8 +21,8 @@ public class RepoTest {
 		p.put("movieDatabase", "new://Resource?type=DataSource");
 		p.put("movieDatabase.JdbcDriver", "org.hsqldb.jdbcDriver");
 		p.put("movieDatabase.JdbcUrl","jdbc:hsqldb:mem:moviedb" + System.currentTimeMillis());
-
-		EJBContainer.createEJBContainer(p).getContext().bind("inject", this);
+		EJBContainer container = EJBContainer.createEJBContainer(p);
+		container.getContext().bind("inject", this);
 	}
 
 	@Test
