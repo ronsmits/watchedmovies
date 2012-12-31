@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .span10
+    table.table.table-condensed.table-striped
+      tr
+        th Name
+        th watched
+        th scoring
+      each t in movie
+        tr
+          td= t.title
+          td= t.watched
+          td= t.scoring
+    

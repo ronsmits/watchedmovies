@@ -1,0 +1,24 @@
+extends layout
+
+block append head
+  script(src=context+ "/js/jquery1.8.3.js")
+  script(src=context+"/js/bootstrap-datepicker.js")
+  script(type='text/javascript')
+    $(function(){
+      $('#dp3').datepicker();
+    });
+block content
+  .span10
+    form.form(action="rest/add",method="post")
+      label.hidden-phone(for="title") Title
+      input.input-xxlarge(type="text", id="title", name="title", placeholder="Title")
+      label.hidden-phone(for="date") Date watched
+      .input-append.date(id="dp3",data-date-format="dd-mm-yyyy")
+        input.span2(size="16",type="text",readonly,placeholder="watched", id="date", name="date")
+        span.add-on 
+          i.icon-th
+      label.hidden-phone(for="score") Score
+      input.input-small("type="text", id="score", name="score", placeholder="the score")
+      div
+        button.btn.btn-primary(type="submit") Save
+        button.btn(type="reset") Reset

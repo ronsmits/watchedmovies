@@ -1,0 +1,21 @@
+!!! 5
+html
+  block head
+    title Movies watched
+    link(rel="stylesheet", href=context + "/css/bootstrap.css")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href=context + "/css/bootstrap-responsive.css")
+  body
+    .container-fluid
+      .masthead
+        h3.muted Movies watched
+        
+    .container-fluid
+      .row-fluid
+        .span2
+          ul.nav.nav-list
+            li.nav-header: span Menu
+            li: a(href= context + "/index") list
+            li: a(href= context + "/addmovie") add a movie
+          
+        block content
