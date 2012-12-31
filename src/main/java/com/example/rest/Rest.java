@@ -1,4 +1,4 @@
-package org.ronsmits.rest;
+package com.example.rest;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,9 +21,9 @@ import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.ronsmits.Movie;
-import org.ronsmits.Repo;
-import org.ronsmits.JadeEngine;
+import com.example.ejb.Repo;
+import com.example.model.Movie;
+import com.example.utils.JadeEngine;
 
 import de.neuland.jade4j.exceptions.JadeCompilerException;
 import de.neuland.jade4j.exceptions.JadeException;

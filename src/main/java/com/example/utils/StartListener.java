@@ -1,10 +1,12 @@
-package org.ronsmits.rest;
+package com.example.utils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import com.example.ejb.Configuration;
 
 /**
  * Application Lifecycle Listener implementation class StartListener

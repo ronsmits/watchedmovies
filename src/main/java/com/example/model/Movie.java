@@ -1,4 +1,4 @@
-package org.ronsmits;
+package com.example.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

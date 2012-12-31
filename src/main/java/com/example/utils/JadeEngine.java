@@ -1,4 +1,4 @@
-package org.ronsmits;
+package com.example.utils;
 
 import java.io.IOException;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 
-import org.ronsmits.rest.Configuration;
+import com.example.ejb.Configuration;
 
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.exceptions.JadeCompilerException;

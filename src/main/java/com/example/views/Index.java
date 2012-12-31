@@ -14,7 +14,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.ronsmits;
+package com.example.views;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,6 +32,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.example.ejb.Repo;
+import com.example.utils.JadeEngine;
 
 @WebServlet(urlPatterns = "/index")
 public class Index extends HttpServlet {

@@ -1,4 +1,4 @@
-package org.ronsmits.rest;
+package com.example.ejb;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
@@ -36,7 +36,7 @@ public class Configuration {
         configuration.setPrettyPrint(true);
         String realPath = context.getRealPath("/");
     	realPath = realPath.substring(0, realPath.lastIndexOf("/"));
-        TemplateLoader loader = new FileTemplateLoader(realPath+"/", "UTF-8");
+        TemplateLoader loader = new FileTemplateLoader(realPath+"/templates/", "UTF-8");
         configuration.setTemplateLoader(loader);
 	}		
 	

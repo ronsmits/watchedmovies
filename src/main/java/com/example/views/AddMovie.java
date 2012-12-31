@@ -1,4 +1,4 @@
-package org.ronsmits;
+package com.example.views;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.example.ejb.Repo;
+import com.example.utils.JadeEngine;
 
 /**
  * Servlet implementation class AddMovie
