@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebListener;
 import com.example.ejb.Configuration;
 
 /**
- * Application Lifecycle Listener implementation class StartListener
+ * After the start of the application, initialize the {@link Configuration} bean with the servletContext.
  *
  */
 @WebListener
@@ -19,23 +19,22 @@ public class StartListener implements ServletContextListener {
      * Default constructor. 
      */
     public StartListener() {
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
-    public void contextInitialized(ServletContextEvent arg0) {
-        ServletContext servletContext = arg0.getServletContext();
-        System.out.println(servletContext.getContextPath());
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        ServletContext servletContext = servletContextEvent.getServletContext();
         configuration.setContext(servletContext);
     }
 
 	/**
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
-    public void contextDestroyed(ServletContextEvent arg0) {
-        // TODO Auto-generated method stub
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        
     }
 	
 }
