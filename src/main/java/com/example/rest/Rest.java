@@ -24,11 +24,17 @@ import com.example.utils.JadeEngine;
 import de.neuland.jade4j.exceptions.JadeCompilerException;
 import de.neuland.jade4j.exceptions.JadeException;
 
+/**
+ * the router of the system. From here the separate URI's are guided to the right implementation.
+ * @author ron
+ *
+ */
 @Path(value="rest")
 public class Rest {
 
 	@EJB private Repo repo;
 	@Inject private JadeEngine jadeEngine;
+	
 	@GET
 	@Produces(MediaType.TEXT_HTML)
 	public String getHtml() throws JadeCompilerException, JadeException, IOException{
