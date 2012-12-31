@@ -1,10 +1,13 @@
 package com.example.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@Entity
 @XmlRootElement
 public class Movie {
-
+	@Id
 	private String title;
 	private String watched;
 	private int scoring;
