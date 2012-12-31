@@ -12,14 +12,12 @@ import javax.persistence.Query;
 import com.example.model.Movie;
 
 /**
- * Session Bean implementation class Repo
+ * Session Bean 
  */
 @Stateless
 @LocalBean
 public class Repo {
-	private static List<Movie> movies = new ArrayList<Movie>();
 	
-
 	@PersistenceContext private EntityManager manager;
     /**
      * Default constructor. 
