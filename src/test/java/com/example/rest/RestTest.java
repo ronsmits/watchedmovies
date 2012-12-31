@@ -30,7 +30,8 @@ public class RestTest {
     @Deployment
     public static WebArchive archive() {
         final WebArchive war = ShrinkWrap.create(WebArchive.class)
-                .addPackages(true, "com.example");
+                .addPackages(true, "com.example")
+                .addAsWebResource(RestTest.class.getResource("/META-INF/persistence.xml"), "META-INF/persistence.xml");
 
         // Recursively add all the src/main/webapp content
         war.merge(ShrinkWrap.create(GenericArchive.class).as(ExplodedImporter.class)
