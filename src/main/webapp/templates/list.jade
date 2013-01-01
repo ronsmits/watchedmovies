@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .span10
+    table.table.table-condensed.table-striped
+      tr
+        th Name
+        th watched
+        th scoring
+        th id
+        th command
+      each t in movie
+        tr
+          td= t.title
+          td= t.watched
+          td= t.scoring
+          td= t.id
+          td: a(href= 'delete/' + t.id) Delete
+    

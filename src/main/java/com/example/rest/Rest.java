@@ -40,7 +40,7 @@ public class Rest {
 	public String getHtml() throws JadeCompilerException, JadeException, IOException{
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("movie", repo.getList());
-		return jadeEngine.render("index", map);
+		return jadeEngine.render("list", map);
 	}
 	
 	@GET

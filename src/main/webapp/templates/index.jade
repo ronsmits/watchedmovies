@@ -1,15 +1,23 @@
-extends layout
+extend layout
 
 block content
   .span10
-    table.table.table-condensed.table-striped
-      tr
-        th Name
-        th watched
-        th scoring
-      each t in movie
-        tr
-          td= t.title
-          td= t.watched
-          td= t.scoring
+    .hero-unit
+      h3 Watchedmovies
+      p 
+        |  is a playground with <a href="http://tomee.apache.org" target="_blank">Tomee</a>,
+        |   <a href="http://jade-lang.com" target="_blank">Jade</a> and REST
     
+    .row-fluid
+      .span6
+        p why?
+        p 
+          |Tomee is a very small but TCK compliant JavaEE server. I wanted to play with it for quite some time. At the same time
+          |  a hardfloat JVM was released as release candidate for the RaspBerry PI. 
+      .span6
+        p
+          | All the source code can be found at <a href="https://github.com/ronsmits/watchedmovies">Github repo</a>
+        p 
+          | Issues, feature requests and the likes might, or might not get picked up.   
+          | You can always <a href="https://github.com/ronsmits/watchedmovies/fork">Fork the code</a>. If you do and you do something you would like to see added
+          |  to the main branch just send a pull request. 
