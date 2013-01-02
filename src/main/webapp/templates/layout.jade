@@ -18,5 +18,7 @@ html
             li: a(href= context) home
             li: a(href= context + "/rest") list
             li: a(href= context + "/rest/add") add a movie
-          
+          each user in users
+            ol
+              li #{user.pictureurl}
         block content

@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import com.example.utils.JadeEngine;
 import com.example.utils.StartListener;
 
+import de.neuland.jade4j.Jade4J.Mode;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.template.FileTemplateLoader;
 import de.neuland.jade4j.template.TemplateLoader;
@@ -48,6 +49,7 @@ public class Configuration {
 	private void setupJadeConfiguration() {
 		configuration = new JadeConfiguration();
         configuration.setPrettyPrint(true);
+        configuration.setCaching(false);
         String realPath = context.getRealPath("/");
     	realPath = realPath.substring(0, realPath.lastIndexOf("/"));
         TemplateLoader loader = new FileTemplateLoader(realPath+"/templates/", "UTF-8");
