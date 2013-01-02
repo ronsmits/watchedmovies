@@ -28,13 +28,14 @@ public class Index extends HttpServlet{
 		Map<String,Object> map = new HashMap<String, Object>();
 		List<User> users = new ArrayList<User>();
 		String[] parameterValues = request.getParameterValues("id");
-		if (parameterValues.length>0) {
+		if (parameterValues!=null && parameterValues.length>0) {
 			System.out.println("id is "+parameterValues[0]);
 			User user = repo.findUser(parameterValues[0]);
 			users.add(user);
 			System.out.println("user is "+ user);
+			map.put("name", user.getUsername());
+			map.put("picture", user.getPictureurl());
 		}
-		map.put("users", users);
 		response.getWriter().write(engine.render("index", map));
 	}
 }

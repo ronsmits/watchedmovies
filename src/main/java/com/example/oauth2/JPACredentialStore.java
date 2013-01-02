@@ -45,7 +45,7 @@ public class JPACredentialStore implements CredentialStore {
 		user.setFirstName((String) jsonObject.get("given_name"));
 		user.setLastName((String) jsonObject.get("family_name"));
 		user.setPictureurl((String) jsonObject.get("picture"));
-		
+		userrepo.save(user);
 	}
 
 }
