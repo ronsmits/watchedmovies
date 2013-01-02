@@ -4,12 +4,12 @@ import java.io.IOException;
 
 import javax.ejb.EJB;
 
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 
 import com.example.model.User;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.auth.oauth2.CredentialStore;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 public class JPACredentialStore implements CredentialStore {
 
@@ -38,7 +38,7 @@ public class JPACredentialStore implements CredentialStore {
 		userrepo.save(user);
 	}
 
-	public void update(String userid, JSONObject jsonObject) throws JSONException {
+	public void update(String userid, JSONObject jsonObject) throws JSONException  {
 		User user = userrepo.findUser(userid);
 		if (user==null)
 			return;
