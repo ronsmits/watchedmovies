@@ -11,7 +11,7 @@ block content
   .span10
     form.form(action="add",method="post")
       label.hidden-phone(for="title") Title
-      input.input-xxlarge(type="text", id="title", name="title", placeholder="Title")
+      input.input-xxlarge(type="text", id="title", name="title", placeholder="Title", required="required")
       label.hidden-phone(for="date") Date watched
       .input-append.date(id="dp3",data-date-format="dd-mm-yyyy")
         input.span2(size="16",type="text",readonly,placeholder="watched", id="date", name="date")
