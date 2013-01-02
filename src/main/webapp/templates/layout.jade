@@ -18,5 +18,8 @@ html
             li: a(href= context) home
             li: a(href= context + "/rest") list
             li: a(href= context + "/rest/add") add a movie
-          
+          if locals.name
+            img(src = picture)
+          else
+            a.btn(href= context+"/login.html") login
         block content
