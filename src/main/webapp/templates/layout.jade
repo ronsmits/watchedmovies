@@ -1,4 +1,9 @@
 !!! 5
+if locals.id
+  -addtoLink = "?id=" + id
+else 
+  -addtoLink=""        
+  
 html
   block head
     title Movies watched
@@ -14,12 +19,13 @@ html
       .row-fluid
         .span2.well
           ul.nav.nav-list
-            li.nav-header: span Menu
-            li: a(href= context) home
-            li: a(href= context + "/rest") list
-            li: a(href= context + "/rest/add") add a movie
+            li.nav-header: span Menu 
+            li: a(href= context + addtoLink) home
+            li: a(href= context + "/rest" + addtoLink) list
+            if locals.id
+              li: a(href= context + "/rest/add" + addtoLink) add a movie
           if locals.name
             img(src = picture)
           else
-            a.btn(href= context+"/login.html") login
+            a.btn(href= context+"/login.html") Connect using google
         block content

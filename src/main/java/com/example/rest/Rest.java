@@ -25,6 +25,7 @@ import javax.ws.rs.core.Response.Status;
 
 import com.example.ejb.Repo;
 import com.example.model.Movie;
+import com.example.model.User;
 import com.example.oauth2.UserRepo;
 import com.example.utils.JadeEngine;
 
@@ -60,6 +61,12 @@ public class Rest {
 	public String getHtmlWithId(@QueryParam("id") String id) throws JadeCompilerException, JadeException, IOException{
 		Map<String,Object> map = new HashMap<String, Object>();
 		System.out.println("id is set to " +id);
+		if (id!=null) {
+			map.put("id", id);
+			User findUser = userRepo.findUser(id);
+			map.put("picture", findUser.getPictureurl());
+			map.put("name", findUser.getFirstName());
+		}
 		map.put("movie", repo.getList());
 		return jadeEngine.render("list", map);		
 	}
