@@ -24,7 +24,7 @@ html
             li: a(href= context + "/rest" + addtoLink) list
             if locals.id
               li: a(href= context + "/rest/add" + addtoLink) add a movie
-          if locals.name
+          if locals.id
             img(src = picture)
           else
             a.btn(href= context+"/login.html") Connect using google

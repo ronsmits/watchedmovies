@@ -25,6 +25,7 @@ public class Index extends HttpServlet{
 	@EJB private UserRepo repo;
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("index.html");
 		Map<String,Object> map = new HashMap<String, Object>();
 		List<User> users = new ArrayList<User>();
 		String[] parameterValues = request.getParameterValues("id");
@@ -33,6 +34,7 @@ public class Index extends HttpServlet{
 			User user = repo.findUser(parameterValues[0]);
 			users.add(user);
 			System.out.println("user is "+ user);
+			map.put("id", parameterValues[0]);
 			map.put("name", user.getUsername());
 			map.put("picture", user.getPictureurl());
 		}

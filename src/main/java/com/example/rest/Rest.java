@@ -61,14 +61,18 @@ public class Rest {
 	public String getHtmlWithId(@QueryParam("id") String id) throws JadeCompilerException, JadeException, IOException{
 		Map<String,Object> map = new HashMap<String, Object>();
 		System.out.println("id is set to " +id);
+		checkAndSetId(id, map);
+		map.put("movie", repo.getList());
+		return jadeEngine.render("list", map);		
+	}
+
+	private void checkAndSetId(String id, Map<String, Object> map) {
 		if (id!=null) {
 			map.put("id", id);
 			User findUser = userRepo.findUser(id);
 			map.put("picture", findUser.getPictureurl());
 			map.put("name", findUser.getFirstName());
 		}
-		map.put("movie", repo.getList());
-		return jadeEngine.render("list", map);		
 	}
 	
 	@GET
@@ -97,7 +101,9 @@ public class Rest {
 	@GET
 	@Path("add")
 	@Produces(MediaType.TEXT_HTML) 
-	public String getAddMovie() throws JadeCompilerException, JadeException, IOException{
-		return jadeEngine.render("addmovie", new HashMap<String, Object>());
+	public String getAddMovie(@QueryParam("id") String id) throws JadeCompilerException, JadeException, IOException{
+		Map<String,Object> map = new HashMap<String, Object>();
+		checkAndSetId(id, map);
+		return jadeEngine.render("addmovie", map);
 	}
 }
