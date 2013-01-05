@@ -7,6 +7,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.example.model.User;
 
 @Stateless
@@ -14,7 +17,7 @@ import com.example.model.User;
 public class UserRepo {
 
 	@PersistenceContext private EntityManager manager;
-	
+	Logger logger = LoggerFactory.getLogger(getClass());
 	public void save(User user){
 		manager.merge(user);
 	}
@@ -27,7 +30,7 @@ public class UserRepo {
 			return singleResult;
 		} catch (NoResultException nre){
 			// a new user!
-			System.out.println("exception: "+nre.getMessage());
+			logger.info("exception: "+nre.getMessage());
 			return null;
 		}
 	}

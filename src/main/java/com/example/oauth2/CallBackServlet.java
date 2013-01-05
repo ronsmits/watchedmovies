@@ -6,6 +6,7 @@ import java.util.Collections;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.MediaType;
@@ -32,20 +33,26 @@ public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
 	      throws ServletException, IOException {
 		System.out.println("logged in ok");
 		try {
-			loadGoogleInfo(credential.getAccessToken());
+			System.out.println("accesstoken "+ credential.getAccessToken());
+			System.out.println("refreshtoken" + credential.getRefreshToken());
+			loadGoogleInfo(credential);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    resp.sendRedirect("/movies?id="+userid);
+	    resp.addCookie(new Cookie("id", userid));
+
+		resp.sendRedirect("http://localhost:10179/movies/rest?id="+userid);
 	  }
 	
-	private void loadGoogleInfo(String accessToken) throws JSONException {
-		String url = GoogleUrl+accessToken;
+	private String loadGoogleInfo(Credential credential) throws JSONException, IOException {
+		String url = GoogleUrl+credential.getAccessToken();
 		WebClient client = WebClient.create(url);
 		String string = client.accept(MediaType.APPLICATION_JSON).get(String.class);
 		System.out.println("string returned is "+ string);
-		store.update(userid, new JSONObject(string));
+		userid =(String) new JSONObject(string).get("id");
+		store.store(userid, credential, new JSONObject(string));
+		return userid;
 	}
 	@Override
 	protected String getRedirectUri(HttpServletRequest arg0)
@@ -58,8 +65,7 @@ public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
 	protected String getUserId(HttpServletRequest arg0)
 			throws ServletException, IOException {
 		System.out.println("callback getUserId");
-		userid = "ron";
-		return "ron";
+		return null;
 	}
 
 	@Override
@@ -73,7 +79,7 @@ public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
 				"ej9HWe7rjCWpSF_qILZ_UvvK",
 				Collections
 						.singletonList("https://www.googleapis.com/auth/userinfo.profile"))
-				.setCredentialStore(store).build();
+				.build();
 	}
 
 }

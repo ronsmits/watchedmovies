@@ -30,7 +30,7 @@ public class LoginServlet extends AbstractAuthorizationCodeServlet {
 	protected String getUserId(HttpServletRequest arg0)
 			throws ServletException, IOException {
 		System.out.println("getUserId called");
-		return "ron";
+		return null;
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class LoginServlet extends AbstractAuthorizationCodeServlet {
 				"ej9HWe7rjCWpSF_qILZ_UvvK",
 				Collections
 						.singletonList("https://www.googleapis.com/auth/userinfo.profile"))
-				.setCredentialStore(store).build();
+				.build();
 	}
 
 }

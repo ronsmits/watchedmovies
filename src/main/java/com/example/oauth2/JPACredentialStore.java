@@ -11,30 +11,33 @@ import com.google.api.client.auth.oauth2.CredentialStore;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-public class JPACredentialStore implements CredentialStore {
+public class JPACredentialStore  {
 
 	@EJB private UserRepo userrepo;
 	
-	@Override
 	public void delete(String arg0, Credential credential) throws IOException {
 		System.out.println("deleting: " + arg0);
 
 	}
 
-	@Override
 	public boolean load(String arg0, Credential credential) throws IOException {
 		System.out.println("loading "+ arg0);
 		return false;
 	}
 
-	@Override
-	public void store(String username, Credential credential) throws IOException {
+	public void store(String username, Credential credential, JSONObject object) throws IOException, JSONException {
 		System.out.println("storing " + username);
 		User user = userrepo.findUser(username);
 		if (user == null)
 			user = new User();
 		user.setUsername(username);
-		user.setCredential(credential);
+		user.setFirstName((String) object.get("given_name"));
+		user.setLastName((String) object.get("family_name"));
+		user.setAccessToken(credential.getAccessToken());
+		user.setRefreshToken(credential.getRefreshToken());
+		
+		user.setPictureurl((String) object.get("picture"));
+
 		userrepo.save(user);
 	}
 

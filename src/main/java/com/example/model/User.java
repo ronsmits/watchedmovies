@@ -23,9 +23,8 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String pictureurl;
-
-	@Transient
-	private Credential credential;
+	private String accessToken;
+	private String refreshToken;
 	
 	public User() {
 		// default constructor.
@@ -35,12 +34,6 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public Credential getCredential() {
-		return credential;
-	}
-	public void setCredential(Credential credential) {
-		this.credential = credential;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -88,6 +81,18 @@ public class User {
 			return false;
 		}
 		return true;
+	}
+	public String getAccessToken() {
+		return accessToken;
+	}
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
+	}
+	public String getRefreshToken() {
+		return refreshToken;
+	}
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
 	}
 	
 }

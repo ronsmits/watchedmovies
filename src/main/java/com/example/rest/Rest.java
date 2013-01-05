@@ -1,24 +1,38 @@
 package com.example.rest;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Request;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.example.ejb.Repo;
 import com.example.model.Movie;
+import com.example.oauth2.UserRepo;
 import com.example.utils.JadeEngine;
 
 import de.neuland.jade4j.exceptions.JadeCompilerException;
@@ -33,14 +47,28 @@ import de.neuland.jade4j.exceptions.JadeException;
 public class Rest {
 
 	@EJB private Repo repo;
+	@EJB private UserRepo userRepo;
 	@Inject private JadeEngine jadeEngine;
-	
+	@Context HttpHeaders headers;
+
+//	@GET
+//	@Produces(MediaType.TEXT_HTML)
+//	public String getHtml(@CookieParam("id") String id) throws JadeCompilerException, JadeException, IOException{
+//		System.out.println("header is "+ id);
+//		
+//		Map<String,Object> map = new HashMap<String, Object>();
+//		map.put("movie", repo.getList());
+//		return jadeEngine.render("list", map);
+//	}
+
 	@GET
+	
 	@Produces(MediaType.TEXT_HTML)
-	public String getHtml() throws JadeCompilerException, JadeException, IOException{
+	public String getHtmlWithId(@QueryParam("id") String id) throws JadeCompilerException, JadeException, IOException{
 		Map<String,Object> map = new HashMap<String, Object>();
+		System.out.println("id is set to " +id);
 		map.put("movie", repo.getList());
-		return jadeEngine.render("list", map);
+		return jadeEngine.render("list", map);		
 	}
 	
 	@GET
@@ -52,8 +80,8 @@ public class Rest {
 	@POST
 	@Path("add")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public String postAMovie(
-			MultivaluedMap<String, String> formparams) throws JadeCompilerException, JadeException, IOException{
+	public Response postAMovie(
+			MultivaluedMap<String, String> formparams) throws JadeCompilerException, JadeException, IOException, URISyntaxException{
 			String title = formparams.getFirst("title");
 			String watched = formparams.getFirst("date");
 			String scoreStr = formparams.getFirst("score");
@@ -64,7 +92,7 @@ public class Rest {
 				throw new WebApplicationException(Status.NOT_ACCEPTABLE);
 			}
 			repo.save(new Movie(title, watched, score));
-		return getHtml();
+		return Response.seeOther(new URI("rest")).build();
 	}
 	@GET
 	@Path("add")
