@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.example.model.User;
-import com.example.oauth2.UserRepo;
 
 public class UserRepoTest {
 

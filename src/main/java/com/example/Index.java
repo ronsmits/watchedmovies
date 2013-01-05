@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.ejb.UserRepo;
 import com.example.model.User;
-import com.example.oauth2.UserRepo;
 import com.example.utils.JadeEngine;
 
 @WebServlet("/index.html")

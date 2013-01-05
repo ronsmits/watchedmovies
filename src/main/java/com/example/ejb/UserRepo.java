@@ -1,4 +1,4 @@
-package com.example.oauth2;
+package com.example.ejb;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;

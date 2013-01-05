@@ -6,9 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Transient;
-
-import com.google.api.client.auth.oauth2.Credential;
 
 @Entity(name="usertbl")
 @NamedQueries({
@@ -24,8 +21,6 @@ public class User {
 	private String lastName;
 	private String pictureurl;
 
-	@Transient
-	private Credential credential;
 	
 	public User() {
 		// default constructor.
@@ -35,12 +30,6 @@ public class User {
 	}
 	public void setUsername(String username) {
 		this.username = username;
-	}
-	public Credential getCredential() {
-		return credential;
-	}
-	public void setCredential(Credential credential) {
-		this.credential = credential;
 	}
 	public String getFirstName() {
 		return firstName;
