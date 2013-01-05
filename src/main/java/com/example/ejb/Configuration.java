@@ -7,7 +7,6 @@ import javax.servlet.ServletContext;
 import com.example.utils.JadeEngine;
 import com.example.utils.StartListener;
 
-import de.neuland.jade4j.Jade4J.Mode;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.template.FileTemplateLoader;
 import de.neuland.jade4j.template.TemplateLoader;
