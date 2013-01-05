@@ -4,12 +4,11 @@ import java.io.IOException;
 
 import javax.ejb.EJB;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import com.example.model.User;
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.auth.oauth2.CredentialStore;
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
 
 public class JPACredentialStore  {
 

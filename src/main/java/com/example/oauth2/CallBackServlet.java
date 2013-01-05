@@ -22,12 +22,14 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson.JacksonFactory;
 
-@WebServlet("/callback.html")
+@WebServlet(urlPatterns={"/callback.html", "/callback"})
 public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
-
+	private static final long serialVersionUID = 8150862402641087491L;
 	private static final String GoogleUrl =  "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
 	private String userid;
+
 	@Inject private JPACredentialStore store;
+	
 	@Override
 	  protected void onSuccess(HttpServletRequest req, HttpServletResponse resp, Credential credential)
 	      throws ServletException, IOException {
@@ -42,7 +44,7 @@ public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
 		}
 	    resp.addCookie(new Cookie("id", userid));
 
-		resp.sendRedirect("http://localhost:10179/movies/rest?id="+userid);
+		resp.sendRedirect("http://localhost:10179/watchedmovies/rest?id="+userid);
 	  }
 	
 	private String loadGoogleInfo(Credential credential) throws JSONException, IOException {
@@ -58,7 +60,7 @@ public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
 	protected String getRedirectUri(HttpServletRequest arg0)
 			throws ServletException, IOException {
 		System.out.println("callback re-direct");
-		return "http://localhost:8080/movies/callback.html";
+		return "http://localhost:8080/watchedmovies/callback";
 	}
 
 	@Override

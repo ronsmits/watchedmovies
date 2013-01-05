@@ -16,6 +16,7 @@ import com.google.api.client.json.jackson.JacksonFactory;
 
 @WebServlet("/login.html")
 public class LoginServlet extends AbstractAuthorizationCodeServlet {
+	private static final long serialVersionUID = 4882980001619126394L;
 
 	@Inject private JPACredentialStore store;
 	
@@ -23,7 +24,8 @@ public class LoginServlet extends AbstractAuthorizationCodeServlet {
 	protected String getRedirectUri(HttpServletRequest arg0)
 			throws ServletException, IOException {
 		System.out.println("getRedirectURI called");
-		return "http://localhost:8080/movies/callback.html";
+		System.out.println(arg0.getContextPath());
+		return "http://localhost:8080/watchedmovies/callback";
 	}
 
 	@Override
