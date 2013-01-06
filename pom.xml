@@ -14,7 +14,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.ronsmits</groupId>
-	<artifactId>movies</artifactId>
+	<artifactId>watchedmovies</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>movies TomEE Webapp</name>
@@ -92,6 +92,11 @@
 	  <artifactId>jettison</artifactId>
 	  <version>1.3.2</version>
 	  <scope>provided</scope>
+	 </dependency>
+	 <dependency>
+	 	<groupId>org.json</groupId>
+	 	<artifactId>json</artifactId>
+	 	<version>20090211</version>
 	 </dependency>
 	</dependencies>
 
