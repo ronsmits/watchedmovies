@@ -14,6 +14,7 @@ public class Movie {
 	private String title;
 	private String watched;
 	private int scoring;
+	private String imdbId;
 	
 
 	public Movie() {
@@ -51,5 +52,13 @@ public class Movie {
 	}
 	public void setScoring(int scoring) {
 		this.scoring = scoring;
+	}
+
+	public String getImdbId() {
+		return imdbId;
+	}
+
+	public void setImdbId(String imdbId) {
+		this.imdbId = imdbId;
 	}
 }

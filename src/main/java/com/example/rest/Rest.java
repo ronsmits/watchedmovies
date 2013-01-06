@@ -3,6 +3,7 @@ package com.example.rest;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 
 import com.example.ejb.Repo;
 import com.example.model.Movie;
@@ -44,16 +47,7 @@ public class Rest {
 	@EJB private UserRepo userRepo;
 	@Inject private JadeEngine jadeEngine;
 	@Context HttpHeaders headers;
-
-//	@GET
-//	@Produces(MediaType.TEXT_HTML)
-//	public String getHtml(@CookieParam("id") String id) throws JadeCompilerException, JadeException, IOException{
-//		System.out.println("header is "+ id);
-//		
-//		Map<String,Object> map = new HashMap<String, Object>();
-//		map.put("movie", repo.getList());
-//		return jadeEngine.render("list", map);
-//	}
+	@Context private UriInfo uriInfo;
 
 	@GET
 	
@@ -89,6 +83,7 @@ public class Rest {
 			String title = formparams.getFirst("title");
 			String watched = formparams.getFirst("date");
 			String scoreStr = formparams.getFirst("score");
+			String id = formparams.getFirst("id"); // this time the id is passed as a hidden input. I really need to find something else for this
 			int score;
 			try {
 				score = Integer.parseInt(scoreStr);
@@ -96,8 +91,12 @@ public class Rest {
 				throw new WebApplicationException(Status.NOT_ACCEPTABLE);
 			}
 			repo.save(new Movie(title, watched, score));
-		return Response.seeOther(new URI("rest")).build();
+			UriBuilder ub = uriInfo.getBaseUriBuilder();
+			URL url = ub.path("view").path(title).queryParam("id", id).build().toURL();
+			System.err.println(url);
+		return Response.seeOther(url.toURI()).build();
 	}
+	
 	@GET
 	@Path("add")
 	@Produces(MediaType.TEXT_HTML) 
