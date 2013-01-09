@@ -15,13 +15,21 @@
  */
 package com.example.wicket.pages.template;
 
+import javax.ejb.EJB;
+import javax.servlet.http.Cookie;
+
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.request.Response;
+import org.apache.wicket.request.http.WebRequest;
+import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.ronsmits.slidenavigationpanel.Page2;
-import org.ronsmits.slidenavigationpanel.Page3;
 import org.ronsmits.slidenavigationpanel.SideNavigationPanel;
 
+import com.example.model.User;
+import com.example.oauth2.UserRepo;
 import com.example.wicket.pages.HomePage;
+import com.example.wicket.panels.LoggedInPanel;
+import com.example.wicket.panels.LoginPanel;
 
 /**
  *
@@ -29,6 +37,7 @@ import com.example.wicket.pages.HomePage;
  */
 public abstract class AbstractPage extends WebPage {
 
+	@EJB private UserRepo repo;
     /**
 	 * 
 	 */
@@ -36,19 +45,36 @@ public abstract class AbstractPage extends WebPage {
 
 	public AbstractPage() {
         super();
-        setupMenu();
+        setup();
     }
 
     public AbstractPage(PageParameters parameters) {
         super(parameters);
-        System.out.println("page " + getPage().toString());
-        setupMenu();
+        
+        setup();
     }
-
+    private void setup() {
+    	setupMenu();
+    	setupLogin();
+    }
     private void setupMenu() {
         add(new SideNavigationPanel(new SideNavigationPanel.Builder("navigation", getPage())
-                .addMenuItem("Home", HomePage.class)
-                .addMenuItem("pagina 2", Page2.class)
-                .addMenuItem("pagina 3", Page3.class)));
+                .addMenuItem("Home", HomePage.class)));
+        
+    }
+    
+    private void setupLogin() {
+    	WebRequest request = (WebRequest) getRequestCycle().getRequest();
+        Cookie cookie = request.getCookie("id");
+        if (cookie==null) { // did not find it
+        	add(new LoginPanel("login"));
+        } else {
+        	cookie.setMaxAge(60*60);
+        	User user = repo.findUser(cookie.getValue());
+        	add(new LoggedInPanel("login", user.getPictureurl(), user.getFirstName()));
+        	WebResponse response = (WebResponse) getRequestCycle().getResponse();
+        	response.addCookie(cookie);
+        }
+    	
     }
 }

@@ -42,9 +42,11 @@ public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    resp.addCookie(new Cookie("id", userid));
+		Cookie cookie = new Cookie("id", userid);
+		cookie.setMaxAge(60);
+	    resp.addCookie(cookie);
 
-		resp.sendRedirect("http://localhost:10179/watchedmovies/rest?id="+userid);
+		resp.sendRedirect("index.html");
 	  }
 	
 	private String loadGoogleInfo(Credential credential) throws JSONException, IOException {

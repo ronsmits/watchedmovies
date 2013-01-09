@@ -15,28 +15,34 @@ limitations under the License.
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="masthead well-small">
-                <h3 class="muted">Watched movies</h3>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span2">
-                    <div wicket:id="navigation" class="well"></div>
-                </div>
-                <div class="span10">
-                    <wicket:child/>
-                </div>
-            </div>
-        </div>
-    </body>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="masthead well-small">
+			<h3 class="muted">Watched movies</h3>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span2">
+				<div class="well">
+					<div wicket:id="navigation"></div>
+				</div>
+				<div class="well" wicket:id="login"></div>
+			</div>
+			<wicket:child />
+			<div class="navbar navbar-static-bottom pull-right">
+				<a class="brand" href="ron-smits.blogspot.com">Blog</a>
+			</div>
+
+		</div>
+
+	</div>
+</body>
 </html>
