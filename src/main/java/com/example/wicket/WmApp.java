@@ -6,6 +6,7 @@ import javax.naming.NamingException;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.settings.IRequestCycleSettings.RenderStrategy;
 import org.apache.wicket.settings.IResourceSettings;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 import org.wicketstuff.javaee.injection.JavaEEComponentInjector;
@@ -21,6 +22,7 @@ public class WmApp extends WebApplication {
 	@Override
 	protected void init() {
 		System.out.println("starting up");
+		getRequestCycleSettings().setRenderStrategy(RenderStrategy.REDIRECT_TO_RENDER);
 		getComponentInstantiationListeners().add(new JavaEEComponentInjector(this,new TomeeJndiNamingStrategy("watchedmovies")));
 		getMarkupSettings().setStripWicketTags(true); // needed to make
 														// bootstrap work
