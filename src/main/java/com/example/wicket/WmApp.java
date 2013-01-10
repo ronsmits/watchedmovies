@@ -7,6 +7,7 @@ import javax.naming.NamingException;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IResourceSettings;
+import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 import org.wicketstuff.javaee.injection.JavaEEComponentInjector;
 import org.wicketstuff.javaee.naming.global.AppJndiNamingStrategy;
 import org.wicketstuff.javaee.naming.global.ModuleJndiNamingStrategy;
@@ -28,6 +29,7 @@ public class WmApp extends WebApplication {
 	}
 
 	private void setupMounts() {
+		new AnnotatedMountScanner().scanPackage("com.example.wicket.pages").mount(this);
 		mountPage("index.html", HomePage.class);
 	}
 	private void setupResourceFinder() {

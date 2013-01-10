@@ -15,13 +15,13 @@ import com.example.model.Movie;
  */
 @Stateless
 @LocalBean
-public class Repo {
+public class MovieRepo {
 	
 	@PersistenceContext private EntityManager manager;
     /**
      * Default constructor. 
      */
-    public Repo() {
+    public MovieRepo() {
         // TODO Auto-generated constructor stub
     }
     

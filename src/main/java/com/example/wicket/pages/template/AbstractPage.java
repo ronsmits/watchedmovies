@@ -28,6 +28,7 @@ import org.ronsmits.slidenavigationpanel.SideNavigationPanel;
 import com.example.model.User;
 import com.example.oauth2.UserRepo;
 import com.example.wicket.pages.HomePage;
+import com.example.wicket.pages.ListPage;
 import com.example.wicket.panels.LoggedInPanel;
 import com.example.wicket.panels.LoginPanel;
 
@@ -59,7 +60,9 @@ public abstract class AbstractPage extends WebPage {
     }
     private void setupMenu() {
         add(new SideNavigationPanel(new SideNavigationPanel.Builder("navigation", getPage())
-                .addMenuItem("Home", HomePage.class)));
+                .addMenuItem("Home", HomePage.class)
+                .addMenuItem("List", ListPage.class)
+                ));
         
     }
     
