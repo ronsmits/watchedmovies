@@ -5,28 +5,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-<wicket:extend>
-	<div class="span10">
-	<table class="table table-condensed table-striped">
-		<thead>
-		<tr>
-			<th>Title</th>
-			<th>year</th>
-		</tr>
-		</thead>
-		<tbody>
-			<tr wicket:id="rows">
-				<td wicket:id="title"></td>
-				<td wicket:id="watched"></td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2"><div wicket:id="paging"></div></td>
-			</tr>
-		</tfoot>
-	</table>
-	</div>
-</wicket:extend>
+	<wicket:extend>
+		<div class="span10">
+			<table class="table table-condensed table-striped table-bordered">
+				<thead>
+					<tr>
+						<th width="75%">Title</th>
+						<th width="15%">Watched on</th>
+						<th width="10%">Score</th>
+					</tr>
+				</thead>
+				<tbody data-provides="rowlink">
+					<tr wicket:id="rows">
+						<td><a href="#" wicket:id="link"> <wicket:container
+									wicket:id="title" />
+						</a></td>
+						<td wicket:id="watched"></td>
+						<td wicket:id="scoring"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div wicket:id="paging"></div>
+		</div>
+	</wicket:extend>
 </body>
 </html>

@@ -5,7 +5,7 @@ import java.util.Iterator;
 import javax.ejb.EJB;
 
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -16,6 +16,8 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import com.example.ejb.MovieRepo;
 import com.example.model.Movie;
+import com.example.wicket.bootstrap.paginator.BootstrapPaginator;
+import com.example.wicket.bootstrap.paginator.BootstrapPaginator;
 import com.example.wicket.pages.template.AbstractPage;
 
 @MountPath("/list.html")
@@ -29,14 +31,20 @@ public class ListPage extends AbstractPage {
 
 			@Override
 			protected void populateItem(Item<Movie> item) {
-				System.out.println("received "+ item.getModelObject().getTitle());
 				item.setDefaultModel(new CompoundPropertyModel<Movie>(new Model<Movie>(item.getModelObject())));
-				item.add(new Label("title"));
+				item.add(new Link<Void>("link") {
+
+					@Override
+					public void onClick() {
+					}
+					
+				}.add(new Label("title", item.getModelObject().getTitle())));
 				item.add(new Label("watched"));
+				item.add(new Label("scoring"));
 			}
 		};
 		dv.setItemsPerPage(10);
-		add(new PagingNavigator("paging", dv));
+		add(new BootstrapPaginator("paging", dv));
 		add(dv);
 	}
 	private class  ListDataProvider implements IDataProvider<Movie>{
@@ -50,19 +58,16 @@ public class ListPage extends AbstractPage {
 
 		@Override
 		public Iterator<? extends Movie> iterator(long index, long count) {
-			System.out.println("wanting " + index +" "+ count);
 			return movieRepo.getList().subList((int)index, (int)(index+count)).iterator();
 		}
 
 		@Override
 		public IModel<Movie> model(Movie movie) {
-			System.out.println("working on " +movie.getTitle());
 			return new Model<Movie>(movie);
 		}
 
 		@Override
 		public long size() {
-			System.out.println("count is "+ movieRepo.getList().size());
 			return movieRepo.getList().size();
 		}
 		

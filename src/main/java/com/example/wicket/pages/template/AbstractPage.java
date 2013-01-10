@@ -16,6 +16,7 @@
 package com.example.wicket.pages.template;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 
 import org.apache.wicket.markup.html.WebPage;
@@ -25,6 +26,7 @@ import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.ronsmits.slidenavigationpanel.SideNavigationPanel;
 
+import com.example.model.Movie;
 import com.example.model.User;
 import com.example.oauth2.UserRepo;
 import com.example.wicket.pages.HomePage;
@@ -39,6 +41,7 @@ import com.example.wicket.panels.LoginPanel;
 public abstract class AbstractPage extends WebPage {
 
 	@EJB private UserRepo repo;
+
     /**
 	 * 
 	 */
@@ -55,6 +58,7 @@ public abstract class AbstractPage extends WebPage {
         setup();
     }
     private void setup() {
+    	setStatelessHint(true);
     	setupMenu();
     	setupLogin();
     }
