@@ -8,32 +8,32 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.example.model.Movie;
+import com.example.model.Film;
 
 /**
  * Session Bean 
  */
 @Stateless
 @LocalBean
-public class MovieRepo {
+public class FilmRepo {
 	
 	@PersistenceContext private EntityManager manager;
     /**
      * Default constructor. 
      */
-    public MovieRepo() {
+    public FilmRepo() {
         // TODO Auto-generated constructor stub
     }
     
-    public List<Movie> getList() {
-    	Query query = manager.createQuery("select m from Movie m order by m.watched desc");
+    public List<Film> getList() {
+    	Query query = manager.createQuery("select m from Film m order by m.watched desc");
     	@SuppressWarnings("unchecked")
-		List<Movie> resultList = query.getResultList();
+		List<Film> resultList = query.getResultList();
     	return resultList;
     }
     
-    public void save(Movie movie) {
-    	manager.merge(movie);
+    public void save(Film film) {
+    	manager.merge(film);
     }
 
 }

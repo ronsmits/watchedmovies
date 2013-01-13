@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<wicket:panel>
+<div class="span10">
+    <div class="row=fluid">
+		<div class="span5">
+			<table class="table table-bordered">
+				<tr>
+					<td>Title</td>
+					<td wicket:id="title"></td>
+				</tr>
+				<tr>
+					<td>Director</td>
+					<td wicket:id="director"></td>
+				</tr>
+				<tr>
+					<td>Actors</td>
+					<td><ul>
+							<li wicket:id="actors"></li>
+						</ul></td>
+				</tr>
+				<tr>
+					<td>Writers</td>
+					<td><ul>
+							<li wicket:id="writers"></li>
+						</ul></td>
+				</tr>
+				<tr>
+					<td>Score</td>
+					<td wicket:id="imdbRating"></td>
+				</tr>
+				<tr>
+					<td>Year</td>
+					<td wicket:id="year"></td>
+				</tr>
+				<tr>
+					<td>Duration</td>
+					<td wicket:id="runtime"></td>
+				</tr>
+				<tr>
+					<td>Plot</td>
+					<td wicket:id="plot"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="span5">
+			<img class="img-polaroid" wicket:id="poster">
+		</div>
+		</div>
+		</div>
+	</wicket:panel>
+</body>
+</html>

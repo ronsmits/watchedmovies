@@ -1,21 +1,21 @@
 package com.example.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Transient;
-
-import com.google.api.client.auth.oauth2.Credential;
 
 @Entity(name="usertbl")
 @NamedQueries({
 	@NamedQuery(name="user.findAll", query="select u from usertbl u"),
 	@NamedQuery(name="user.findUser", query="select u from usertbl u where u.username=:username")
 })
-public class User {
+public class User implements Serializable{
+	private static final long serialVersionUID = -6669985967677266507L;
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;

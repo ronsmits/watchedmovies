@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<wicket:extend>
+		<wicket:container wicket:id="moviepanel" />
+		<wicket:enclosure child="acceptForm:accept">
+		<div class="row-fluid">
+		<div class="span2"></div>
+			<div class=" span10 form-actions">
+				<form wicket:id="acceptForm">
+					<input type="submit" wicket:id="accept" value="Save this" class="btn btn-primary btn-block"/>
+				</form>
+			</div>
+			</div>
+		</wicket:enclosure>
+	</wicket:extend>
+</body>
+</html>

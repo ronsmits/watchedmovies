@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<wicket:extend>
+<div class="span10">
+
+<form wicket:id="form">
+	<label for="title">Title</label>
+	<input type="text" wicket:id="title" id="title" class="input-xxlarge"/>
+	<label for="watched">Watched</label>
+	<div class="input-append date" id="dp" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+		<input class="span2" type="text" wicket:id="watched" id="watched"/>
+		<span class="add-on"><i class="icon-th"></i></span>
+	</div>
+	<label for="score">Score</label>
+	<input type="text" wicket:id="scoring"/>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Add</button>
+	</div>
+</form>
+</div>
+</wicket:extend>
+</body>
+</html>

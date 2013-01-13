@@ -14,28 +14,47 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import com.example.ejb.MovieRepo;
-import com.example.model.Movie;
-import com.example.wicket.bootstrap.paginator.BootstrapPaginator;
+import com.example.ejb.FilmRepo;
+import com.example.model.Film;
 import com.example.wicket.bootstrap.paginator.BootstrapPaginator;
 import com.example.wicket.pages.template.AbstractPage;
+import com.omdbapi.OmdbConnectionErrorException;
+import com.omdbapi.OmdbMovieNotFoundException;
+import com.omdbapi.OmdbSyntaxErrorException;
 
 @MountPath("/list.html")
 public class ListPage extends AbstractPage {
 	private static final long serialVersionUID = -2460208909526548826L;
-	@EJB private MovieRepo movieRepo;
+	@EJB private FilmRepo filmRepo;
 	
 	public ListPage(){
-		DataView<Movie> dv = new DataView<Movie>("rows", new ListDataProvider()) {
+		DataView<Film> dv = new DataView<Film>("rows", new ListDataProvider()) {
 			private static final long serialVersionUID = -2460208909526548825L;
 
 			@Override
-			protected void populateItem(Item<Movie> item) {
-				item.setDefaultModel(new CompoundPropertyModel<Movie>(new Model<Movie>(item.getModelObject())));
+			protected void populateItem(final Item<Film> item) {
+				item.setDefaultModel(new CompoundPropertyModel<Film>(new Model<Film>(item.getModelObject())));
 				item.add(new Link<Void>("link") {
+					private static final long serialVersionUID = -7776322754369708763L;
 
 					@Override
 					public void onClick() {
+						try {
+							if (item.getModelObject().getImdbId()==null) {
+								setResponsePage(new FindMovieInOmdb(item.getModel()));
+							} else {
+							setResponsePage(new ViewMoviePage(item.getModel()));
+							}
+						} catch (OmdbMovieNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (OmdbConnectionErrorException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (OmdbSyntaxErrorException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 					
 				}.add(new Label("title", item.getModelObject().getTitle())));
@@ -47,7 +66,7 @@ public class ListPage extends AbstractPage {
 		add(new BootstrapPaginator("paging", dv));
 		add(dv);
 	}
-	private class  ListDataProvider implements IDataProvider<Movie>{
+	private class  ListDataProvider implements IDataProvider<Film>{
 		private static final long serialVersionUID = 6516915081804073347L;
 
 		@Override
@@ -57,18 +76,18 @@ public class ListPage extends AbstractPage {
 		}
 
 		@Override
-		public Iterator<? extends Movie> iterator(long index, long count) {
-			return movieRepo.getList().subList((int)index, (int)(index+count)).iterator();
+		public Iterator<? extends Film> iterator(long index, long count) {
+			return filmRepo.getList().subList((int)index, (int)(index+count)).iterator();
 		}
 
 		@Override
-		public IModel<Movie> model(Movie movie) {
-			return new Model<Movie>(movie);
+		public IModel<Film> model(Film film) {
+			return new Model<Film>(film);
 		}
 
 		@Override
 		public long size() {
-			return movieRepo.getList().size();
+			return filmRepo.getList().size();
 		}
 		
 	}

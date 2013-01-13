@@ -2,7 +2,7 @@ package com.example.ejb;
 
 import java.util.Properties;
 
-import com.example.model.Movie;
+import com.example.model.Film;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import javax.ejb.embeddable.EJBContainer;
 public class RepoTest {
 
 	@EJB
-	private MovieRepo movieRepo;
+	private FilmRepo filmRepo;
 
 	@Before
 	public void setup() throws Exception {
@@ -27,10 +27,10 @@ public class RepoTest {
 
 	@Test
 	public void testGetList() throws Exception {
-		Assert.assertEquals(0, movieRepo.getList().size());
+		Assert.assertEquals(0, filmRepo.getList().size());
 
-		movieRepo.save(new Movie("Blade Runner", "June 25, 1982", 10));
+		filmRepo.save(new Film("Blade Runner", "June 25, 1982", 10));
 
-		Assert.assertEquals(1, movieRepo.getList().size());
+		Assert.assertEquals(1, filmRepo.getList().size());
 	}
 }

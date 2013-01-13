@@ -21,7 +21,7 @@
   <persistence-unit name="movie-unit">
     <jta-data-source>movieDatabase</jta-data-source>
     <non-jta-data-source>movieDatabaseUnmanaged</non-jta-data-source>
-    <class>com.example.model.Movie</class>
+    <class>com.example.model.Film</class>
 
     <properties>
       <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<wicket:extend>
+		<div class="span6">
+			<h4>Which movie do you mean?</h4>
+			<table class="table table-condensed table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Year</th>
+						<th>Imdb</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="view">
+						<td><a href="#" wicket:id="link"> 
+						<wicket:container wicket:id="title" /></a></td>
+						<td wicket:id="year"></td>
+						<td class="noref"><span wicket:id="imdbID" class="temp"></span><i
+							class="icon-film" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span4">
+			<div id="loading">
+				<img src="img/ajax-loader.gif" style="display: none;" />
+			</div>
+			<div id="images"></div>
+		</div>
+	</wicket:extend>
+</body>
+</html>

@@ -1,17 +1,11 @@
 package com.example.wicket;
 
-import javax.enterprise.inject.spi.BeanManager;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IRequestCycleSettings.RenderStrategy;
 import org.apache.wicket.settings.IResourceSettings;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 import org.wicketstuff.javaee.injection.JavaEEComponentInjector;
-import org.wicketstuff.javaee.naming.global.AppJndiNamingStrategy;
-import org.wicketstuff.javaee.naming.global.ModuleJndiNamingStrategy;
 
 import com.example.utils.StripPackageResourceFinder;
 import com.example.utils.TomeeJndiNamingStrategy;

@@ -10,7 +10,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class Movie implements Serializable{
+public class Film implements Serializable{
+	private static final long serialVersionUID = 2956979688081192919L;
+
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	private String title;
@@ -19,11 +21,11 @@ public class Movie implements Serializable{
 	private String imdbId;
 	
 
-	public Movie() {
+	public Film() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Movie (String title, String watched, int scoring) {
+	public Film (String title, String watched, int scoring) {
 		this.title = title;
 		this.watched = watched;
 		this.scoring = scoring;
