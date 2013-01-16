@@ -71,18 +71,6 @@ public abstract class AbstractPage extends WebPage {
 
 	}
 
-	private boolean checkLogin() {
-		WebRequest request = (WebRequest) getRequestCycle().getRequest();
-		Cookie cookie = request.getCookie("id");
-		if (cookie == null) { // did not find it
-			return false;
-		} else {
-			user = repo.findUser(cookie.getValue());
-			resetTimer(cookie);
-			return true;
-		}
-	}
-
 	private void resetTimer(Cookie cookie) {
 		cookie.setMaxAge(60 * 60);
 		WebResponse response = (WebResponse) getRequestCycle()
@@ -98,5 +86,17 @@ public abstract class AbstractPage extends WebPage {
 			
 		}
 
+	}
+
+	private boolean checkLogin() {
+		WebRequest request = (WebRequest) getRequestCycle().getRequest();
+		Cookie cookie = request.getCookie("id");
+		if (cookie == null) { // did not find it
+			return false;
+		} else {
+			user = repo.findUser(cookie.getValue());
+			resetTimer(cookie);
+			return true;
+		}
 	}
 }
