@@ -24,8 +24,11 @@ public class LoginServlet extends AbstractAuthorizationCodeServlet {
 	protected String getRedirectUri(HttpServletRequest arg0)
 			throws ServletException, IOException {
 		System.out.println("getRedirectURI called");
-		System.out.println(arg0.getContextPath());
-		return "http://localhost:8080/watchedmovies/callback";
+		System.out.println(arg0.getLocalAddr());
+		if (arg0.getLocalAddr().equals("127.0.0.1"))
+			return "http://localhost:8080/watchedmovies/callback";
+		else
+			return "http://ronsmits.org/watchedmovies/callback";
 	}
 
 	@Override

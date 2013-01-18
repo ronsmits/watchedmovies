@@ -62,7 +62,10 @@ public class CallBackServlet extends AbstractAuthorizationCodeCallbackServlet {
 	protected String getRedirectUri(HttpServletRequest arg0)
 			throws ServletException, IOException {
 		System.out.println("callback re-direct");
-		return "http://localhost:8080/watchedmovies/callback";
+		if (arg0.getLocalAddr().equals("127.0.0.1"))
+			return "http://localhost:8080/watchedmovies/callback";
+		else
+			return "http://ronsmits.org/watchedmovies/callback";
 	}
 
 	@Override
