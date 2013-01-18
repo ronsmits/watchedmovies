@@ -34,8 +34,10 @@ public class JPACredentialStore  {
 		user.setLastName((String) object.get("family_name"));
 		user.setAccessToken(credential.getAccessToken());
 		user.setRefreshToken(credential.getRefreshToken());
-		
-		user.setPictureurl((String) object.get("picture"));
+		if (object.has("picture"))
+			user.setPictureurl((String) object.get("picture"));
+		else 
+			user.setPictureurl("http://placehold.it/103x103");
 
 		userrepo.save(user);
 	}
