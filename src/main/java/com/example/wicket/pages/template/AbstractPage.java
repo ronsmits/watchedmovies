@@ -22,8 +22,8 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.http.WebRequest;
 import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.ronsmits.slidenavigationpanel.SideNavigationPanel;
-import org.ronsmits.slidenavigationpanel.SideNavigationPanel.Builder;
+import org.ronsmits.navigationpanel.NavigationPanel.Builder;
+import org.ronsmits.navigationpanel.SideNavigationPanel;
 
 import com.example.model.User;
 import com.example.oauth2.UserRepo;
