@@ -13,7 +13,6 @@ public class TomeeJndiNamingStrategy implements IJndiNamingStrategy {
 	@Override
 	public String calculateName(String ejbName, Class<?> ejbType) {
 		String nameToUse = ejbName != null ? ejbName : ejbType.getSimpleName();
-		System.out.println("looking for " + "java:global/"+moduleName+"/" + nameToUse + "!" + ejbType.getName());
 		return "java:global/"+moduleName+"/" + nameToUse + "!" + ejbType.getName();
 	}
 

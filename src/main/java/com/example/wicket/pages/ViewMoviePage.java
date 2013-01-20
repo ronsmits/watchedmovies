@@ -19,7 +19,6 @@ public class ViewMoviePage extends AbstractPage {
 	private static final long serialVersionUID = 2156959158360060743L;
 
 	public ViewMoviePage(IModel<Film> model) throws OmdbMovieNotFoundException, OmdbConnectionErrorException, OmdbSyntaxErrorException {
-		System.out.println(model.getObject());
 		if (model.getObject().getImdbId()==null) {
 			setResponsePage(new FindMovieInOmdb(model));
 		} else {

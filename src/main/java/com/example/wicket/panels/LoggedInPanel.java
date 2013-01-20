@@ -25,7 +25,6 @@ public class LoggedInPanel extends Panel {
 
 			@Override
 			public void onSubmit() {
-				System.out.println("called to delete");
 				WebRequest request = (WebRequest) getRequestCycle().getRequest();
 				Cookie cookie = request.getCookie("id");
 				WebResponse response = (WebResponse) getRequestCycle()

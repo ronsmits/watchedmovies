@@ -18,7 +18,6 @@ public class ViewMoviePanel extends Panel {
 	public ViewMoviePanel(String id, Model<Movie> model) {
 		super(id);
 		setDefaultModel(new CompoundPropertyModel<Movie>(model));
-		//add(new Label("title"));
 		add(new ExternalLink("titlelink", "http://www.imdb.com/title/"+model.getObject().getImdbId(), model.getObject().getTitle()));
 		add(new Label("director"));
 		add(listView("actors", model.getObject().getActors()));
