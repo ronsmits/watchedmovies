@@ -3,6 +3,8 @@ package com.example.ejb;
 import java.util.Properties;
 
 import com.example.model.Film;
+import com.example.model.User;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,8 +30,9 @@ public class RepoTest {
 	@Test
 	public void testGetList() throws Exception {
 		Assert.assertEquals(0, filmRepo.getList().size());
-
-		filmRepo.save(new Film("Blade Runner", "June 25, 1982", 10));
+		User user= new User();
+		user.setFirstName("ron");
+		filmRepo.save(new Film("Blade Runner", "June 25, 1982", 10, user));
 
 		Assert.assertEquals(1, filmRepo.getList().size());
 	}

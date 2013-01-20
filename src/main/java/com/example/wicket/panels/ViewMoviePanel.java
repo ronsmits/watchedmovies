@@ -3,6 +3,7 @@ package com.example.wicket.panels;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -17,7 +18,8 @@ public class ViewMoviePanel extends Panel {
 	public ViewMoviePanel(String id, Model<Movie> model) {
 		super(id);
 		setDefaultModel(new CompoundPropertyModel<Movie>(model));
-		add(new Label("title"));
+		//add(new Label("title"));
+		add(new ExternalLink("titlelink", "http://www.imdb.com/title/"+model.getObject().getImdbId(), model.getObject().getTitle()));
 		add(new Label("director"));
 		add(listView("actors", model.getObject().getActors()));
 		add(listView("writers", model.getObject().getWriters()));

@@ -27,7 +27,7 @@ limitations under the License.
 	<div class="container-fluid">
 		<div class="masthead well-small">
 			<h3 class="muted">Watched movies</h3>
-			
+
 		</div>
 	</div>
 	<div class="container-fluid">
@@ -36,7 +36,7 @@ limitations under the License.
 				<div class="well">
 					<div wicket:id="navigation"></div>
 				</div>
-				<div class="well" wicket:id="login"></div>
+				<div class="well pagination-centered" wicket:id="login"></div>
 			</div>
 			<wicket:child />
 			<div class="navbar navbar-static-bottom pull-right">
@@ -51,9 +51,9 @@ limitations under the License.
 	<script type="text/javascript" src="js/bootstrap-rowlink.js"></script>
 	<script type="text/javascript" src="js/watchedmovies.js"></script>
 	<script>
-	!function($){
-		$("#dp").datepicker();
-	}(window.jQuery);
+		!function($) {
+			$("#dp").datepicker();
+		}(window.jQuery);
 	</script>
 </body>
 </html>

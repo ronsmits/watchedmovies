@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -19,16 +20,19 @@ public class Film implements Serializable{
 	private String watched;
 	private int scoring;
 	private String imdbId;
+	@OneToOne
+	private User addedBy;
 	
 
 	public Film() {
-		// TODO Auto-generated constructor stub
+		// standard constructor
 	}
 	
-	public Film (String title, String watched, int scoring) {
+	public Film (String title, String watched, int scoring, User user) {
 		this.title = title;
 		this.watched = watched;
 		this.scoring = scoring;
+		this.addedBy = user;
 	}
 	
 	public void setId(long id) {
@@ -64,5 +68,13 @@ public class Film implements Serializable{
 
 	public void setImdbId(String imdbId) {
 		this.imdbId = imdbId;
+	}
+	
+	public void setAddedBy (User user) {
+		this.addedBy = user;
+	}
+	
+	public User getAddedBy() {
+		return addedBy;
 	}
 }

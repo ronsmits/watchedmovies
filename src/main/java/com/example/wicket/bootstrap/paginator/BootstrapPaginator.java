@@ -8,10 +8,10 @@ public class BootstrapPaginator extends PagingNavigator {
 	private IPageable pageable;
 	public BootstrapPaginator(String id, IPageable pageable) {
 		super(id, pageable);
-		if (pageable.getPageCount()==1)
-			this.getParent().setVisible(false);
-		// TODO Auto-generated constructor stub
 		this.pageable = pageable;
+		if (pageable.getPageCount()==1)
+			this.setVisible(false);
+
 	}
 	
 	@Override

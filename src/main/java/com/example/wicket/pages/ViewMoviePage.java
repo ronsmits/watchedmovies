@@ -6,6 +6,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import com.example.model.Film;
 import com.example.wicket.pages.template.AbstractPage;
+import com.example.wicket.panels.EditFilmPanel;
 import com.example.wicket.panels.ViewMoviePanel;
 import com.omdbapi.Movie;
 import com.omdbapi.Omdb;
@@ -23,6 +24,7 @@ public class ViewMoviePage extends AbstractPage {
 			setResponsePage(new FindMovieInOmdb(model));
 		} else {
 			Movie movie = new Omdb().getById(model.getObject().getImdbId());
+			add(new EditFilmPanel("film", model.getObject()));
 			add(new ViewMoviePanel("movie", Model.of(movie)));
 		}
 	}

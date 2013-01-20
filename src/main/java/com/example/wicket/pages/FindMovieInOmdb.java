@@ -55,9 +55,7 @@ public class FindMovieInOmdb extends AbstractPage {
 						}
 					}
 				}.add(new Label("title", item.getModelObject().getTitle())));
-				item.add(new Label("year"));
-				item.add(new Label("imdbID"));
-				
+				item.add(new Label("year"));				
 			}
 		};
 		add(view);

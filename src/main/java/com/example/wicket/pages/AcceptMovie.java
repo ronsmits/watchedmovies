@@ -48,6 +48,7 @@ public class AcceptMovie extends AbstractPage {
 			public void onSubmit(){
 				model.getObject().setTitle(searchResultModel.getObject().getTitle());
 				model.getObject().setImdbId(searchResultModel.getObject().getImdbID());
+				model.getObject().setAddedBy(user);
 				filmRepo.save(model.getObject());
 				setResponsePage(ListPage.class);
 			}

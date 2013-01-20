@@ -88,6 +88,10 @@ public abstract class AbstractPage extends WebPage {
 
 	}
 
+	public boolean isLoggedIn() {
+		return user==null;
+	}
+	
 	private boolean checkLogin() {
 		WebRequest request = (WebRequest) getRequestCycle().getRequest();
 		Cookie cookie = request.getCookie("id");
