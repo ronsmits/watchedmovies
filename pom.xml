@@ -159,10 +159,6 @@
             <url>https://repository.apache.org/content/groups/snapshots/</url>
         </repository>
         <repository>
-            <id>jade4j-releases</id>
-            <url>https://raw.github.com/neuland/jade4j/master/releases</url>
-        </repository>
-        <repository>
             <id>omdbapi4j repo</id>
             <url>http://omdbapi4j.sf.net/maven2</url>
         </repository>

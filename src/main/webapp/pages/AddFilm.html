@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<wicket:extend>
-<div class="span10">
+    <head>
+        <meta charset="UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+    <wicket:extend>
+        <div class="span10">
 
-<form wicket:id="form">
-	<input type="text" wicket:id="title" id="title" class="input-xxlarge" placeholder="Title to search for" required="true"/>
+            <form wicket:id="form">
+                <input type="text" wicket:id="title" id="title" class="input-xxlarge" placeholder="Title or part of title to search for" required="true"/>
 
-	<div class="form-actions">
-		<button type="submit" class="btn btn-primary">Add</button>
-	</div>
-</form>
-</div>
-</wicket:extend>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Find</button>
+                </div>
+            </form>
+        </div>
+    </wicket:extend>
 </body>
 </html>
